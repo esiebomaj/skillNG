@@ -1,0 +1,55 @@
+.page-title{
+    display: flex;
+    justify-content: center;
+    margin: 1.5em;
+}
+
+.course-info{
+    padding: 1em;
+    border-bottom: 1px solid black;
+}
+
+
+.new-course-prompt{
+margin-top: 2em;
+}
+
+.module-side{
+    padding: 1em;
+    background-color: aliceblue;
+    margin: 1em;
+}
+
+.module-side .contents h3{
+    padding: 0.2em;
+    background-color: cadetblue;
+    border-radius: 5px;
+}
+
+.ui-sortable-handle{
+    border-bottom: 1px solid lightblue;
+    list-style-type: square;
+}
+
+.controls{
+    padding: 0.5em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.main{
+    display: flex;
+    flex-direction: row;
+}
+
+.content-types{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.content-types li{
+    background-color: powderblue;
+    padding: 0.3em;
+    list-style-type: none;
+}

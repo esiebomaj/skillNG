@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{%load static%}
+{% block title %}My courses{% endblock %}
+
+{% block content %}
+<div class="container offset-3 col-md-6">
+    <div class="page-title">
+        <h1>My courses</h1>
+    </div>
+    <div class="module">
+        {% for course in object_list %}
+            <div class="course-info">
+                <h3>{{ course.title }}</h3>
+                <p>{{course.overview}}</p>
+                <p>
+                <a href="{% url 'course_edit' course.id %}">Edit</a>
+                <a href="{% url 'course_delete' course.id %}">Delete</a>
+                <a href="{% url 'course_module_update' course.id %}">Edit modules</a>
+                {% if course.modules.count > 0 %} 
+                <a href="{% url 'module_content_list' course.modules.first.id %}">Manage contents</a>
+                {% endif %}
+                </p>
+            </div>
+        {% empty %}
+            <p>You haven't created any courses yet.</p>
+        {% endfor %}
+        <p class='new-course-prompt'>
+        <a href="{% url 'course_create' %}" class="button">Create new course</a>
+        </p>
+    </div>
+</div>
+    
+{% endblock %}

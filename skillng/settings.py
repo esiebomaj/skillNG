@@ -127,3 +127,8 @@ MEDIA_URL='/media/'
 
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+
+#Extra accounts settings
+LOGIN_REDIRECT_URL='manage_course_list'
+# LOGOUT_REDIRECT_URL='home'

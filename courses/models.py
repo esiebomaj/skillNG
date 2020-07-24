@@ -32,7 +32,7 @@ class Course(models.Model):
         return self.title
 
 class Module(models.Model):
-    course=models.ForeignKey(to=Course, on_delete=models.CASCADE)
+    course=models.ForeignKey(to=Course, on_delete=models.CASCADE, related_name='modules')
     title= models.CharField(max_length=200)
     description= models.TextField()
     order = OrderField(blank=True, for_fields=['course'])
@@ -44,7 +44,7 @@ class Module(models.Model):
         ordering = ['order']
 
 class Content(models.Model):
-    Module = models.ForeignKey(Module, on_delete=models.CASCADE, related_name='contents')
+    module = models.ForeignKey(Module, on_delete=models.CASCADE, related_name='contents')
     content_type=models.ForeignKey(ContentType, on_delete=models.CASCADE, limit_choices_to={'models__in':('text', 'video', 'image', 'file')})
     object_id=models.PositiveIntegerField()
     item=GenericForeignKey('content_type', 'object_id')
