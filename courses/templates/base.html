@@ -20,7 +20,7 @@
 <body>
         <div>
             <nav class="navbar navbar-light navbar-expand-md navigation-clean-button bg-primary" >
-                    <div class="container"><a class="navbar-brand" href="#">Skill <span>NG</span></a>
+                    <div class="container"><a class="navbar-brand" href="{%url 'course_list'%}">Skill <span>NG</span></a>
                         <button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggler">
                             <span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span>
                         </button>
@@ -29,24 +29,39 @@
                             <ul class="nav navbar-nav mr-auto">
                                 <li role="presentation" class="nav-item"><a class="nav-link active" href="#">Contact</a></li>
                                 <li role="presentation" class="nav-item"><a class="nav-link" href="#">About</a></li>
-                                <li class="nav-item dropdown"><a data-toggle="dropdown" aria-expanded="false" class="dropdown-toggle nav-link" href="#">Dropdown </a>
+
+                                <li class="nav-item dropdown"><a data-toggle="dropdown" aria-expanded="false" class="dropdown-toggle nav-link" href="#">Learning </a>
                                     <div role="menu" class="dropdown-menu">
-                                        <a role="presentation" class="dropdown-item" href="#">First Item</a>
-                                        <a role="presentation" class="dropdown-item" href="#">Second Item</a>
-                                        <a role="presentation" class="dropdown-item" href="#">Third Item</a>
+                                        <a role="presentation" class="dropdown-item" href="{%url 'student_course_list'%}">Classroom</a>
+                                        <!-- <a role="presentation" class="dropdown-item" href="#">Second Item</a>
+                                        <a role="presentation" class="dropdown-item" href="#">Third Item</a> -->
                                     </div>
                                 </li>
+                                {% if user.groups.first %}
+                                <li class="nav-item dropdown"><a data-toggle="dropdown" aria-expanded="false" class="dropdown-toggle nav-link" href="#">Tutor </a>
+                                    <div role="menu" class="dropdown-menu">
+                                        <a role="presentation" class="dropdown-item" href="{%url 'manage_course_list'%}">My Courses</a>
+                                        
+                                    </div>
+                                </li>
+                                {%endif%}
+
                             </ul>
                             {%if user.is_authenticated%}
-                            <span class="navbar-text actions">
-                                <a class="login mr-2" href="{%url 'logout'%}">Sign out</a>
-                                <!-- <a class="btn btn-light action-button" role="button" href="#">Sign Up</a> -->
-                            </span>
+                                <span class="navbar-text actions">
+                                    <a class="login mr-2" href="{%url 'logout'%}">Sign out</a>
+                                    <!-- <a class="btn btn-light action-button" role="button" href="#">Sign Up</a> -->
+                                </span>
                             {%else%}
-                            <span class="navbar-text actions">
-                                <a class="login mr-2" href="{%url 'login'%}">Log In</a>
-                                <a class="btn btn-light action-button" role="button" href="#">Sign Up</a>
-                            </span>
+                                <span class="navbar-text actions">
+                                    <a class="login mr-2 btn btn-outline-dark" href="{%url 'login'%}">Log In</a>
+                                    <li class="nav-item dropdown btn btn-light"><a data-toggle="dropdown" aria-expanded="false" class="dropdown-toggle nav-link" href="#">Join us!! </a>
+                                        <div role="menu" class="dropdown-menu">
+                                            <a role="presentation" class="dropdown-item" href="{%url 'tutor_registration'%}">Join as instrutor</a>
+                                            <a role="presentation" class="dropdown-item" href="{%url 'student_registration'%}">Join as student</a>
+                                        </div>
+                                    </li>
+                                </span>
                             {%endif%}
                         </div>
                     </div>

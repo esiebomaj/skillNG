@@ -135,4 +135,4 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 #Extra accounts settings
 LOGIN_REDIRECT_URL = reverse_lazy('student_course_list')
-# LOGOUT_REDIRECT_URL='home'
+LOGOUT_REDIRECT_URL='course_list'

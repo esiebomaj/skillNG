@@ -16,9 +16,26 @@ from django.db.models import Count
 from .models import Subject
 from django.views.generic.detail import DetailView
 from students.forms import CourseEnrollForm
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import Group
+from django.contrib.auth import authenticate, login
 
 
 # Create your views here.
+
+class TutorRegisterView(CreateView):
+    form_class=UserCreationForm
+    template_name='registration/register.html'
+    success_url=reverse_lazy('manage_course_list')
+    def form_valid(self, form):
+        result = super().form_valid(form)
+        cd = form.cleaned_data
+        user = authenticate(username=cd['username'], password=cd['password1'])
+        group = Group.objects.get(name='instructors')
+        user.groups.add(group)
+        login(self.request, user)
+        return result
+
 
 class OwnerMixin(object):
     def get_queryset(self):
