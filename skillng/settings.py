@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'memcache_status',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,12 +43,17 @@ INSTALLED_APPS = [
     'students.apps.StudentsConfig',
     'crispy_forms',
     'embed_video',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+
+    'django.middleware.cache.UpdateCacheMiddleware', #entire site cache settings
     'django.middleware.common.CommonMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware', #entire site cache settings
+
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -118,6 +124,26 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+
+CACHES = {   
+     'default': { 
+         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache', 
+         'LOCATION': '127.0.0.1:11211',
+         }}
+
+#entire site caching settings
+CACHE_MIDDLEWARE_ALIAS = 'default'
+CACHE_MIDDLEWARE_SECONDS = 60 * 15  # 15 minutes
+CACHE_MIDDLEWARE_KEY_PREFIX = 'skillng'
+
+
+# rest framework settings
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        ]
+    }
 
 
 # Static files (CSS, JavaScript, Images)
