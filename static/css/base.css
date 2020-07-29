@@ -1,8 +1,228 @@
+@font-face{
+    src: url('../fonts/DIN_Regular/DIN_Regular.ttf');
+    font-family: DIN_Regular;
+}
+
+@font-face{
+    src: url('../fonts/DIN_Bold.otf');
+    font-family: DIN_Bold;
+}
+
+body{
+    font-family: DIN_Bold;
+}
+
+p{
+    font-family: DIN_Regular;
+}
+
+/* nav styles starts here*/
+
+
+.navbar {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: .0rem  0rem !important;
+}
+
+
+.nav-item {
+    margin-left: 1em;
+    margin-right: 1em;
+    color: white !important;
+    
+}
+
+.box-shadow{
+    box-shadow: 0 0 8px 0 rgba(17,22,26,.16), 0 4px 8px 0 rgba(17,22,26,.08), 0 8px 16px 0 rgba(17,22,26,.08);
+    transition: all 1s ease-in-out;
+}
+
+.fixed{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    transition: all 1s ease-in-out;
+    z-index: 10;
+}
+
+.nav-item :hover{
+    color: #FFAF30 !important;
+    transition: all 0.5s ease;
+    
+}
+
+.get-started-btn{
+    border-radius: 0;
+    background-color: #FFAF30;
+    padding: 0.4em;
+    list-style-type: none;
+    display: inline-block;
+    
+}
+
+.get-started-btn :hover{
+    background-color: white;
+    color: #FFAF30 !important; 
+    transition: all 0.5s ease;
+}
+
+.bg-myblue {
+    background-color: #5358e8!important;
+}
+
+@media (min-width: 1200px){
+.container {
+    max-width: 1200px;
+}
+}
+/* nav styles ends here  */
+
+
+
+/* course list styles or home page */
+.hero{
+    background-image: url('../img/back2.png');
+
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: #5358e8;
+}
+
+.hero-head{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    transition: all 1s ease-in-out;
+}
+
+.hero-head h1{
+    text-align: center;
+}
+
+.hero-head h1 span{
+    color: #ffaf30; 
+    text-align: center;
+}
+
+.hero-head p{
+    font-size: 1.7em;
+    font-weight: 500;
+}
+
+.fa-chevron-down{
+    font-size: 5em !important;
+    margin-top: 1em;
+}
+
+.hero-tail :hover{
+    color: #FFAF30 !important;
+    padding: 0.05em;
+    transition: all 0.5s ease;
+}
+/* course list styles or home page */
+
+/* course- card styling */
+
+.card{
+    max-width: 30%;
+    margin: 1em;
+    padding: 0.1em;
+    box-shadow: 0 0 8px 0 rgba(17,22,26,.16), 0 4px 8px 0 rgba(17,22,26,.08), 0 8px 16px 0 rgba(17,22,26,.08);
+}
+
+.card:hover{
+    box-shadow: 0 0 16px 0 rgba(17,22,26,.16), 0 8px 16px 0 rgba(17,22,26,.08), 0 16px 32px 0 rgba(17,22,26,.08);
+}
+
+.card-img{
+    padding: 1em;
+    transition: all 0.5s ease-in-out;
+}
+
+.card-img:hover{
+    padding: 0em;
+    transition: all 0.5s ease-in-out;
+}
+
+.card-title {
+    margin-bottom: .4rem;
+}
+
+.card-title a{
+    color: black;
+}
+
+.card-details{
+    padding-left: 0.5em;
+}
+
+@media (max-width: 1025px){
+.card{
+    max-width: 48%;
+    margin: 0.2em;
+}
+}
+/* course- card styling */
+
+/* footer styles */
+.footer{
+    background-color: #5358e8;
+    padding: 2em;
+    margin-top: 2em;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 0 0 8px 0 rgba(17,22,26,.16), 0 4px 8px 0 rgba(17,22,26,.08), 0 8px 16px 0 rgba(17,22,26,.08);
+}
+
+.footer-col{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-col h4{
+border-bottom: 2px solid #ffaf30;
+    margin-bottom: 0.5em;
+    padding-bottom: 0.5em;
+    width: 70%;
+
+}
+
+.footer-col li{
+        font-family: DIN_Regular;
+        font-weight: 700;
+        list-style-type: none;
+    }
+
+.footer-copyright-row{
+    display: flex;
+    justify-content: center;
+}
+    
+
+    /* footer styles */
 .page-title{
     display: flex;
     justify-content: center;
     margin: 1.5em;
+    background-color: #5358e8;
 }
+
 
 .course-info{
     padding: 1em;
@@ -14,18 +234,46 @@
 margin-top: 2em;
 }
 
+.module{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
 
 .module-side{
     padding: 1em;
-    background-color: aliceblue;
+    background-color: #d9dffb80;
     margin: 1em;
+    height: 100%;
 }
 
 .module-side .contents h3{
     padding: 0.2em;
-    background-color: cadetblue;
-    border-radius: 5px;
+    background-color: #4c60e6;
+    position: sticky;
 }
+
+.module-side .contents li{
+    margin-bottom: 0.5em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid white;
+    width: 50%;
+    text-decoration: none;
+}
+
+.module-side .contents li:hover{
+    padding: .5em;
+    transition: all .5s ease-in-out;
+   
+}
+
+.module-side .contents li a:hover{
+    padding: .5em;
+    text-decoration: none;
+    border: 0;
+    transition: all .5s ease-in-out;
+}
+
 
 .ui-sortable-handle{
     border-bottom: 1px solid lightblue;
@@ -33,9 +281,11 @@ margin-top: 2em;
 }
 .selected{
     background-color: #b5cce0;
-    border: 1px solid #bbbbc3;
-    border-radius: 5px;
     padding: 0.5em;
+}
+
+#modules{
+    list-style-type: none;
 }
 
 .controls{
@@ -61,3 +311,9 @@ margin-top: 2em;
     list-style-type: none;
 }
 
+@media (max-width: 700px){
+.main{
+    display: block;
+
+}
+}

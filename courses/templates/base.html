@@ -4,11 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{%static 'css/base.css'%}">
+    
 
     <link rel="stylesheet" href="{%static 'bootstrap/css/bootstrap.min.css'%}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
     <link rel="stylesheet" href="{%static 'fonts/font-awesome.min.css' %}">
+
+    <link rel="stylesheet" href="{%static 'css/base.css'%}">
     
 
     <title>
@@ -19,8 +21,8 @@
 </head>
 <body>
         <div>
-            <nav class="navbar navbar-light navbar-expand-md navigation-clean-button bg-primary" >
-                    <div class="container"><a class="navbar-brand" href="{%url 'course_list'%}">Skill <span>NG</span></a>
+            <nav id="main-nav" class="navbar navbar-light navbar-expand-md navigation-clean-button bg-myblue " >
+                    <div class="container"><a class="navbar-brand" href="{%url 'course_list'%}"><img height="80px" src="{%static 'img/3.png'%}" alt=""></span></a>
                         <button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggler">
                             <span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span>
                         </button>
@@ -28,9 +30,9 @@
                             id="navcol-1">
                             <ul class="nav navbar-nav mr-auto">
                                 <li role="presentation" class="nav-item"><a class="nav-link active" href="#">Contact</a></li>
-                                <li role="presentation" class="nav-item"><a class="nav-link" href="#">About</a></li>
+                                <li role="presentation" class="nav-item"><a class="nav-link active" href="#">About</a></li>
 
-                                <li class="nav-item dropdown"><a data-toggle="dropdown" aria-expanded="false" class="dropdown-toggle nav-link" href="#">Learning </a>
+                                <li class="nav-item dropdown box-shadow p-1 active"><a data-toggle="dropdown" aria-expanded="false" class="dropdown-toggle nav-link" href="#">Learning </a>
                                     <div role="menu" class="dropdown-menu">
                                         <a role="presentation" class="dropdown-item" href="{%url 'student_course_list'%}">Classroom</a>
                                         <!-- <a role="presentation" class="dropdown-item" href="#">Second Item</a>
@@ -38,7 +40,7 @@
                                     </div>
                                 </li>
                                 {% if user.groups.first %}
-                                <li class="nav-item dropdown"><a data-toggle="dropdown" aria-expanded="false" class="dropdown-toggle nav-link" href="#">Tutor </a>
+                                <li class="nav-item dropdown box-shadow"><a data-toggle="dropdown" aria-expanded="false" class="dropdown-toggle nav-link" href="#">Tutor </a>
                                     <div role="menu" class="dropdown-menu">
                                         <a role="presentation" class="dropdown-item" href="{%url 'manage_course_list'%}">My Courses</a>
                                         
@@ -55,7 +57,7 @@
                             {%else%}
                                 <span class="navbar-text actions">
                                     <a class="login mr-2 btn btn-outline-dark" href="{%url 'login'%}">Log In</a>
-                                    <li class="nav-item dropdown btn btn-light"><a data-toggle="dropdown" aria-expanded="false" class="dropdown-toggle nav-link" href="#">Join us!! </a>
+                                    <li class="nav-item dropdown get-started-btn"><a data-toggle="dropdown" aria-expanded="false" class="dropdown-toggle nav-link" href="#">GET STARTED!</a>
                                         <div role="menu" class="dropdown-menu">
                                             <a role="presentation" class="dropdown-item" href="{%url 'tutor_registration'%}">Join as instrutor</a>
                                             <a role="presentation" class="dropdown-item" href="{%url 'student_registration'%}">Join as student</a>
@@ -73,7 +75,43 @@
 
         {%endblock%}
     </div>
+    <div class="footer">
+        <div class="row">
+            <div class="col-sm-4 footer-col">
+                <h4>company</h4>
+                <ul>
+                    <li>Tech Traits</li>
+                    <li>SkillBuddy</li>
+                    <li>Blog</li>
+                    <li>Contact us</li>
+                    <li>About us</li>
+                    
+                </ul>
+            </div>
+            <div class="col-sm-4 footer-col">
+                <h4>join us </h4>
+                <ol>
+                    <li>Join as a Tutor</li>
+                    <li>Join as a student</li>
+                    <li>Join as a Developer</li>
+                </ol>
+            </div>
+            <div class="col-sm-4 footer-col">
+                <h4>location</h4>
+                <ol>
+                    <li>Owerri, <br> Imo state Nigeria</li>
+                    
+                </ol>
+            </div>
+        </div>
+        <div class="row footer-copyright-row">
+            <p> copyright © SkillNG 2020</p>
+        </div>
+    </div>
+    <marquee style="position: fixed; bottom: 0px; left: 0px;"  >Made with <i style='color: red;' class="fa fa-heart" aria-hidden="true"></i> by JeremAIh </marquee>
+    <script src="{%static 'js/base.js'%}"></script>
     <script src="{%static 'js/jquery.min.js'%}"></script>
+    <script src="https://use.fontawesome.com/3b8c92293d.js"></script>
     <script src="{%static 'bootstrap/js/bootstrap.min.js'%}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
