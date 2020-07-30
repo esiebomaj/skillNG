@@ -145,7 +145,7 @@ p{
 
 .card{
     max-width: 30%;
-    margin: 1em;
+    margin: 0.5em;
     padding: 0.1em;
     box-shadow: 0 0 8px 0 rgba(17,22,26,.16), 0 4px 8px 0 rgba(17,22,26,.08), 0 8px 16px 0 rgba(17,22,26,.08);
 }
