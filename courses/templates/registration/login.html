@@ -1,28 +1,35 @@
-{% extends "base.html" %}
-{% load crispy_forms_tags %}
-
-{% block title %}
-Log-in
-{% endblock %}
-
-{% block content %}
-<div class="container col-md-6 offset-3">
-    <h1 class="">Log-in</h1>
-    <div class="module offset-3 col-sm-6 mt-5">
-        {% if form.errors %}
-            <p>Your username and password didn't match. Please try again.</p>
-        {% else %}
-            <p>Please, use the following form to log-in:</p>
-        {% endif %}
-        <div class="login-form">
-            <form action="{% url 'login' %}" method="post">
-                {{ form|crispy }}
-                {% csrf_token %}
-                <input type="hidden" name="next" value="{{ next }}" />
-                <p><input class="btn btn-primary" type="submit" value="Log-in"></p>
-            </form>
-        </div>
+{% extends "base.html" %} {% load crispy_forms_tags %} {% block title %} Log-in
+{% endblock %} {% block content %}
+<div class="login-container row">
+  <div class="login-left col-md-6">
+    <h4>We <span class="login-special"> Teach</span></h4>
+    <h3>You <span class="login-special">Learn</span></h3>
+    <h2>We <span class="login-special">Thrive</span></h2>
+  </div>
+  <div class="login-right col-md-6">
+    <div class="signup-page-title">
+      <h1>
+        Log in.
+      </h1>
     </div>
+
+    <div class="main-login-container">
+      {% if form.errors %}
+      <p>Your username and password didn't match. Please try again.</p>
+      {% else %}
+      <p>Please, use the following form to log-in:</p>
+      {% endif %}
+      <div class="login-form">
+        <form action="{% url 'login' %}" method="post">
+          {{ form|crispy }} {% csrf_token %}
+          <input type="hidden" name="next" value="{{ next }}" />
+          <button type="submit" class="p-3 get-started-btn">
+            Login
+          </button>
+        </form>
+      </div>
     </div>
- 
+  </div>
+</div>
+
 {% endblock %}

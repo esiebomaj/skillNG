@@ -1,24 +1,47 @@
-{% extends "base.html" %}
-{% load crispy_forms_tags %}
-
-{% block title %}
- Join as instructor
-{% endblock %}
-
-{% block content %}
-<div class="container offset-4 col-sm-4">
-    <div class="page-title">
-    <h1>
+{% extends "base.html" %} {% load crispy_forms_tags %} {% block title %} Join as
+instructor {% endblock %} {% block content %}
+<div class="signup-container row">
+  <div class="signup-left col-md-6">
+    <h3>
+      <span class="signup-special"></span>
+      <span class="signup-special">Teaching</span>
+      <span class="signup-special">Kids</span>
+      <span class="signup-special">to</span>
+      <span class="signup-special">count</span>
+      <span class="signup-special">is</span>
+      <span class="signup-special">fine</span>
+      <br />
+      <br />
+      <span class="signup-special">but</span>
+      <span class="signup-special">teaching</span>
+      <span class="signup-special">them</span>
+      <span class="signup-special">what</span>
+      <span class="signup-special">counts</span>
+      <span class="signup-special">is.....</span>
+      <br />
+      <br />
+      <span class="signup-special">Awesome!!!</span>
+    </h3>
+  </div>
+  <div class="signup-right col-md-6">
+    <div class="signup-page-title">
+      <h1>
         Join as instructor
-    </h1>
-</div>
-    <div class="module">
-        <p>Enter your details to create an account:</p>
-        <form method="post">
-        {{ form|crispy }}
-        {% csrf_token %}
-        <p><input type="submit" value="Create my account"></p>
-        </form>
+      </h1>
     </div>
+    <div class="main-signup-container">
+      <p>Enter your details to create an account:</p>
+      <form method="post">
+        {{ form|crispy }} {% csrf_token %}
+        <p>
+          <input
+            class="get-started-btn p-2"
+            type="submit"
+            value="Create my account"
+          />
+        </p>
+      </form>
+    </div>
+  </div>
 </div>
 {% endblock %}
