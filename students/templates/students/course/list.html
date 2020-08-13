@@ -1,27 +1,40 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% load cache %} {% block title %} Courses
+{%endblock%} {% block content %}
 
-{% block title %}My courses{% endblock %}
-
-{% block content %}
-    <div class="container offset-3 col-md-6">
-        <div class="page-title">
-            <h1>My courses</h1>
+<div class="container">
+  <div class="page-title">
+    <h1>My courses</h1>
+  </div>
+  <div class="module">
+    {% for course in object_list %}
+    <div class="card large-course-card">
+      <div class="card-header"><i class="fa fa-book"></i> Course</div>
+      <div class="card-body large-course-card-body">
+        <div>
+          <h5 class="card-title">{{ course.title }}</h5>
+          <p class="card-text p-2">{{course.overview}}</p>
+          <a
+            href="{% url 'student_course_detail' course.id %}"
+            class="btn btn-lg btn-primary"
+            >Continue course <i class="fa fa-arrow-right"></i
+          ></a>
         </div>
-    <div class="module">
-        {% for course in object_list %}
-        <div class="course-info">
-            <h3>{{ course.title }}</h3>
-            <p>{{course.overview}}</p>
-            <p><a href="{% url 'student_course_detail' course.id %}">
-            continue course</a></p>
+        <div class="large-course-card-img">
+          <img
+            class="img-fluid rounded"
+            src="https://image.freepik.com/free-vector/international-literacy-day_23-2148602602.jpg"
+            alt=""
+          />
         </div>
-        {% empty %}
-            <p>
-            You are not enrolled in any courses yet.
-            <a href="{% url 'course_list' %}">Browse courses</a>
-            to enroll in a course.
-            </p>
-        {% endfor %}
+      </div>
     </div>
+    {% empty %}
+    <p>
+      You are not enrolled in any courses yet.
+      <a href="{% url 'course_list' %}">Browse courses</a>
+      to enroll in a course.
+    </p>
+    {% endfor %}
+  </div>
 </div>
-{% endblock %}
+{%endblock%}

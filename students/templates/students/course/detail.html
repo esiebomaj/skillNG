@@ -6,12 +6,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="container offset-2 col-sm-8">
-    <div class="page-title">
-    <h1>
-        {{ module.title }}
-    </h1>
-    </div>
+<div class="">
     <div class='main'>
     <aside class="module-side">
     <div class="contents">
@@ -33,12 +28,22 @@
         </ul>
     </div>
     </aside>
-    <div class="module">
+
+   
+    <div class="module-with-side ">
+        <div class="page-title-course">
+            <h1>
+                {{ module.title }}
+            </h1>
+            </div>
         {% cache 600 module_contents module %}
             {% for content in module.contents.all %}
                 {% with item=content.item %}
-                <h2>{{ item.title }}</h2>
-                {{ item.render }}
+
+                <div class="course-content mb-2 pb-2 border-bottom">
+                    <h2>{{ item.title }}</h2>
+                    {{ item.render }}
+                </div>
                 {% endwith %}
             {% endfor %}
         {% endcache %}

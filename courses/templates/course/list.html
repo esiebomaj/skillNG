@@ -33,8 +33,8 @@
     </h1>
     </div>
 
-    <div class='main'>
-    <aside class="module-side col-md-3">
+    <div class='main-home'>
+    <aside class="module-side-home col-md-3">
     <div class="contents">
         <h3>Subjects</h3>
         <ul id="modules">
@@ -53,21 +53,21 @@
         </ul>
     </div>
     </aside>
-    <div class="module col-md-9">
+    <div class="module-home col-md-9">
         {% for course in courses %}
             {% with subject=course.subject %}
-            <div class="card">
-                <div class="card-img">
-                    <img class="img-fluid" src="https://image.freepik.com/free-vector/international-literacy-day_23-2148602602.jpg" alt="">
+            <div class="small-course-card card ">
+                <div class="small-course-card-img card-img">
+                    <img class="img-fluid" src="{{course.flyer_img.url}}" alt="">
                 </div>
-                <div class="card-title">
+                <div class="small-course-card-title card-title">
                     <h3>
                         <a  href="{% url 'course_detail' course.slug %}">
                         {{ course.title }}
                         </a>
                     </h3>
                 </div>
-                <div class="card-details">
+                <div class="small-course-card-details card-details">
                     <p>
                         <a {%if subject.title == 'Programming' %} class='badge badge-primary ' {%elif subject.title == 'Cooking' %} class='badge badge-success ' {%elif subject.title == 'Technology' %} class='badge badge-danger '{%elif subject.title == 'Digital marketing' %} class='badge badge-dark '  {%elif subject.title == 'Love' %} class='badge badge-warning '{%endif%} 
                         href="{% url 'course_list_subject' subject.slug %}">{{subject }}</a>.

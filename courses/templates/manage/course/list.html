@@ -1,33 +1,59 @@
-{% extends "base.html" %}
-{%load static%}
-{% block title %}My courses{% endblock %}
-
+{% extends "base.html" %} {%load static%} {% block title %}courses{%endblock%}
 {% block content %}
-<div class="container offset-3 col-md-6">
-    <div class="page-title">
-        <h1>My courses</h1>
+<div class="container">
+  <div class="page-title">
+    <h1>My courses</h1>
+  </div>
+  <div class="module">
+    {% for course in object_list %}
+    <div class="card large-course-card">
+      <div class="card-header"><i class="fa fa-book"></i> Course</div>
+      <div class="card-body large-course-card-body">
+        <div>
+          <h5 class="card-title">{{ course.title }}</h5>
+          <p class="card-text p-2">{{course.overview}}</p>
+          <p>
+            <a class="border-right p-1" href="{% url 'course_edit' course.id %}"
+              >Edit</a
+            >
+            <a
+              class="border-right p-1"
+              href="{% url 'course_delete' course.id %}"
+              >Delete</a
+            >
+            <a
+              class="border-right p-1"
+              href="{% url 'course_module_update' course.id %}"
+              >Edit modules</a
+            >
+            {% if course.modules.count > 0 %}
+            <a
+              class="border-right p-1"
+              href="{% url 'module_content_list' course.modules.first.id %}"
+              >Manage contents</a
+            >
+            {% endif %}
+          </p>
+        </div>
+        <div class="large-course-card-img">
+          <img
+            class="img-fluid rounded"
+            src="https://image.freepik.com/free-vector/international-literacy-day_23-2148602602.jpg"
+            alt=""
+          />
+        </div>
+      </div>
     </div>
-    <div class="module">
-        {% for course in object_list %}
-            <div class="course-info">
-                <h3>{{ course.title }}</h3>
-                <p>{{course.overview}}</p>
-                <p>
-                <a href="{% url 'course_edit' course.id %}">Edit</a>
-                <a href="{% url 'course_delete' course.id %}">Delete</a>
-                <a href="{% url 'course_module_update' course.id %}">Edit modules</a>
-                {% if course.modules.count > 0 %} 
-                <a href="{% url 'module_content_list' course.modules.first.id %}">Manage contents</a>
-                {% endif %}
-                </p>
-            </div>
-        {% empty %}
-            <p>You haven't created any courses yet.</p>
-        {% endfor %}
-        <p class='new-course-prompt'>
-        <a href="{% url 'course_create' %}" class="btn btn-lg btn-primary">Create new course</a>
-        </p>
-    </div>
+    {% empty %}
+    <p>
+      You have not created any courses yet.
+    </p>
+    {% endfor %}
+    <p class="new-course-prompt">
+      <a href="{% url 'course_create' %}" class="btn btn-lg btn-primary"
+        >Create new course</a
+      >
+    </p>
+  </div>
 </div>
-    
 {% endblock %}

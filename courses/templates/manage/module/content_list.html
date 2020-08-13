@@ -1,19 +1,25 @@
 {% extends "base.html" %}
 {% load course %}
+{%load static%}
 {% block title %}
  Module {{ module.order|add:1 }}: {{ module.title }}
 {% endblock %}
 
 {% block content %}
-<div class="container offset-2 col-md-8">
+<div class=" ">
     {% with course=module.course %}
-    <div class="page-title">
-    <h1 >Course "{{ course.title }}"</h1>
-    </div>
+    
     <div class='main'>
-    <aside class="module-side">
+    <aside class="module-side ">
     <div class="contents">
-       <h3>Modules</h3>
+       <h3>Modules</h3> 
+       <div  class="drag-text text-muted mb-2 ">
+        
+            <img src="{% static 'img/drag2.png'%}"  alt="">
+            (Drag to re-order)
+            <img src="{% static 'img/drag2.png'%}"  alt="">
+        
+       </div>
        <ul id="modules">
            {% for m in course.modules.all %}
                <li data-id="{{ m.id }}" {% if m == module %} class="selected" {% endif %}>
@@ -33,39 +39,53 @@
        Edit modules</a></p>
     </div>
     </aside>
-    <div class="module">
-       <h2>Module {{ module.order|add:1 }}: {{ module.title }}</h2>
-       <h3>Module contents:</h3>
+    <div class="module-with-side">
+        <div class="page-title-course">
+            <h1 >Course "{{ course.title }}"</h1>
+        </div> 
+       <h3>Module {{ module.order|add:1 }}: {{ module.title }}</h3>
+       <h4>Module contents:</h4>
+       <br>
+       <div  class="drag-text text-muted mb-2 ">
+        <img src="{% static 'img/drag2.png'%}"  alt="">
+        (Drag to re-order)
+        <img src="{% static 'img/drag2.png'%}"  alt="">
+        </div>
+        <br>
        <div id="module-contents">
        {% for content in module.contents.all %}
        <div data-id="{{ content.id }}">
            {% with item=content.item %}
-               <p>{{ item }} ({{ item|model_name }})</p>
+               <p>{%if item|model_name == 'video' %}<i class="fab fa-youtube"></i>{%elif item|model_name == 'image' %}<i class="fas fa-images"></i>{%elif item|model_name == 'text' %}<i class="fas fa-file-word"></i>{%else %}<i class="fas fa-file-alt"></i>{%endif%} <span class="text-primary text-lg">|</span> {{ item }} ({{ item|model_name }})</p>
                <div class="controls">
-               <a href="{% url 'module_content_update' module.id item|model_name item.id %}">Edit</a>
+               <a class="btn btn-primary btn-sm" href="{% url 'module_content_update' module.id item|model_name item.id %}"><i class="far fa-edit"></i></a>
                <form action="{% url 'module_content_delete' content.id %}" method="post">
-                   <input type="submit" value="Delete">
+                   
+                   <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
                    {% csrf_token %}
                </form>
             </div>
            {% endwith %}
+           
+
        </div>
        {% empty %}
            <p>This module has no contents yet.</p>
        {% endfor %}
        </div>
-       <h3>Add new content:</h3>
+       <h3><i class="fas fa-plus-square"> content:</i></h3>
        <ul class="content-types">
-           <li><a href="{% url 'module_content_create' module.id 'text'%}">Text</a></li>
-           <li><a href="{% url 'module_content_create' module.id 'image'%}">Image</a></li>
-           <li><a href="{% url 'module_content_create' module.id 'video'%}">Video</a></li>
-           <li><a href="{% url 'module_content_create' module.id 'file'%}">File</a></li>
+           <li><a href="{% url 'module_content_create' module.id 'text Text"><i class="fas fa-file-word"></i> Text </a> </li>
+           <li><a href="{% url 'module_content_create' module.id 'image'%}"><i class="fas fa-images"></i> Image</a></li>
+           <li><a href="{% url 'module_content_create' module.id 'video'%}"><i class="fab fa-youtube"></i> Video</a></li>
+           <li><a href="{% url 'module_content_create' module.id 'file'%}"><i class="fas fa-file-alt"></i> File</a></li>
        </ul>
    </div>
 </div>
 
    {% endwith %}
 </div>
+
 
 {% endblock %}
 

@@ -29,6 +29,8 @@ class Course(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     students = models.ManyToManyField(
         User, related_name='courses_joined', blank=True)
+    flyer_img = models.ImageField(
+        upload_to='images', default='images/default.png', null=True, blank=True)
 
     class Meta:
         ordering = ['-created']
