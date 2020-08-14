@@ -49,6 +49,9 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # for whitenoise
+
     'django.contrib.sessions.middleware.SessionMiddleware',
 
     'django.middleware.cache.UpdateCacheMiddleware',  # entire site cache settings

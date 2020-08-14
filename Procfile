@@ -1,0 +1,1 @@
+web: gunicorn skillng.wsgi --log-file -
