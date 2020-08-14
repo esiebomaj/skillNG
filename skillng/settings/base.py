@@ -14,7 +14,8 @@ import os
 from django.urls import reverse_lazy
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(
+    os.path.abspath(os.path.join(__file__, os.pardir))))
 
 
 # Quick-start development settings - unsuitable for production
@@ -50,9 +51,9 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
 
-    'django.middleware.cache.UpdateCacheMiddleware', #entire site cache settings
+    'django.middleware.cache.UpdateCacheMiddleware',  # entire site cache settings
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.cache.FetchFromCacheMiddleware', #entire site cache settings
+    'django.middleware.cache.FetchFromCacheMiddleware',  # entire site cache settings
 
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -73,7 +74,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                
+
             ],
         },
     },
@@ -126,13 +127,13 @@ USE_L10N = True
 USE_TZ = True
 
 
-CACHES = {   
-     'default': { 
-         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache', 
-         'LOCATION': '127.0.0.1:11211',
-         }}
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '127.0.0.1:11211',
+    }}
 
-#entire site caching settings
+# entire site caching settings
 CACHE_MIDDLEWARE_ALIAS = 'default'
 CACHE_MIDDLEWARE_SECONDS = 60 * 15  # 15 minutes
 CACHE_MIDDLEWARE_KEY_PREFIX = 'skillng'
@@ -142,23 +143,23 @@ CACHE_MIDDLEWARE_KEY_PREFIX = 'skillng'
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-        ]
-    }
+    ]
+}
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS=[os.path.join(BASE_DIR, 'static/'),]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static/'), ]
 
-MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
-MEDIA_URL='/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
-#Extra accounts settings
+# Extra accounts settings
 LOGIN_REDIRECT_URL = reverse_lazy('student_course_list')
-LOGOUT_REDIRECT_URL='course_list'
+LOGOUT_REDIRECT_URL = 'course_list'
