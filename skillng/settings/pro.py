@@ -1,7 +1,7 @@
 from .base import *
 import os
 
-DEBUG = True
+DEBUG = False
 
 ADMINS = (
     ('Esieboma Jeremiah', 'esiebomaj@gmail.com.com'),
