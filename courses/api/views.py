@@ -10,9 +10,10 @@ from rest_framework import viewsets
 from .serializers import CourseSerializer
 from .permissions import IsEnrolled
 from .serializers import CourseWithContentsSerializer
+from rest_framework.decorators import action
 
 API_HOME_DICT = {
-    "intro": "this is a set of API endpoints I built for my SkillNG app incase in furture I decide to convert the app to a react app, its endpoints are as shown below",
+    "intro": "this is a set of API endpoints I built for my SkillNG app incase in furture I want to convert the app to a react app, its endpoints are as shown below",
     "Endpoints": {"subjects/": "To retrieve all the subjects/categories in the database",
                   'subjects/<pk>/': "to retrieve a particular subject/category",
                   'courses/<pk>/enroll/': "to enroll a user for a course",
