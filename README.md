@@ -6,14 +6,11 @@
 <br>
 #### E-learning platform with CMS
 
-SkillNG is an e-learning platform built with Python/Django and Javascript where someone can signup as a student or as an instructor to learn or upload courses for free.
+SkillNG is an e-learning platform built with Python/Django and Javascript where someone can sign up as a student or as an instructor to learn or upload courses for free.
 <br>
 <br>
 <img height=300px src="https://user-images.githubusercontent.com/57163971/90303086-e8cc6900-dea2-11ea-8cb9-0748ef8fae77.png" />
 ## CONTRIBUTING
-This is an open source project and any contributions you have will be apreciated.
+This is an open source project and any contributions you have will be appreciated.
 <br>
-Do well to open an issue, PR or shoot me an email at esiebomaj@gmail.com
-## DEPLOYMENT
-Currently deployed to heroku 
-[here](https://skillng.herokuapp.com/)
+Do well to open an issue, PR, or shoot me an email at esiebomaj@gmail.com
